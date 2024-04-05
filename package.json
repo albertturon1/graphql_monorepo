@@ -7,10 +7,10 @@
   "scripts": {
     "lint": "npx @biomejs/biome lint ./",
     "format": "npx @biomejs/biome format --write .",
+    "dev": "concurrently \"pnpm graphql:watch\" \"pnpm server:dev:watch\" \"pnpm client:dev\"",
     "client:dev": "pnpm --filter @repo/client dev",
     "server:dev:watch": "pnpm --filter @repo/server dev:watch",
-    "graphql:watch": "pnpm --filter @repo/api generate:gql:watch",
-    "dev": "concurrently \"pnpm graphql:watch\" \"pnpm server:dev:watch\" \"pnpm client:dev\""
+    "graphql:watch": "pnpm --filter @repo/api generate:gql:watch"
   },
   "keywords": [],
   "author": "",
