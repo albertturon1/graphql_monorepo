@@ -2,11 +2,21 @@
   "name": "@repo/api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "type": "module",
+  "main": "./src/index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "generate:gql": "graphql-codegen --config codegen.ts",
+    "generate:gql:watch": "pnpm generate:gql --watch"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@graphql-codegen/cli": "^5.0.2",
+    "@graphql-codegen/typescript": "^4.0.6",
+    "@graphql-codegen/typescript-resolvers": "^4.0.6",
+    "@parcel/watcher": "^2.4.1",
+    "@types/node": "^20.12.4",
+    "graphql": "^16.8.1"
+  }
 }
