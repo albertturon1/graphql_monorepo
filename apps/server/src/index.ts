@@ -1,11 +1,15 @@
-import express from 'express'
-const app = express()
-const port = 3000
+import { ApolloServer } from '@apollo/server';
+import { startStandaloneServer } from '@apollo/server/standalone';
+import { typeDefs } from '@repo/api';
+import { resolvers } from './resolvers'
 
-app.get('/', (req, res) => {
-    res.json('Hello World!')
-})
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+});
 
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
-})
+const { url } = await startStandaloneServer(server, {
+  listen: { port: 3000 },
+});
+
+console.log(`🚀  Server ready at: ${url}`);

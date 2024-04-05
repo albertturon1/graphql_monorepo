@@ -1,0 +1,110 @@
+type Album {
+  AlbumId: Int!
+  Title: String!
+  ArtistId: Int!
+}
+
+type Artist {
+  ArtistId: Int!
+  Name: String
+}
+
+type Customer {
+  CustomerId: Int!
+  FirstName: String!
+  LastName: String!
+  Company: String
+  Address: String
+  City: String
+  State: String
+  Country: String
+  PostalCode: String
+  Phone: String
+  Fax: String
+  Email: String!
+  # SupportRepId: Int
+}
+
+type Employee {
+  EmployeeId: Int!
+  LastName: String!
+  FirstName: String!
+  Title: String
+  ReportsTo: Int
+  Address: String
+  City: String
+  State: String
+  Country: String
+  PostalCode: String
+  Phone: String
+  Fax: String
+  Email: String
+}
+
+type Genre {
+  GenreId: Int!
+  Name: String
+}
+
+type Invoice {
+  InvoiceId: Int!
+  CustomerId: Int!
+  BillingAddress: String
+  BillingCity: String
+  BillingState: String
+  BillingCountry: String
+  BillingPostalCode: String
+  Total: Int!
+}
+
+type InvoiceLine {
+  InvoiceLineId: Int!
+  InvoiceId: Int!
+  TrackId: Int!
+  UnitPrice: Int!
+  Quantity: Int!
+}
+
+type MediaType {
+  MediaTypeId: Int!
+  Name: String
+}
+
+type Playlist {
+  PlaylistId: Int!
+  Name: String
+}
+
+type PlaylistTrack {
+  PlaylistId: Int!
+  TrackId: Int!
+}
+
+type Track {
+  TrackId: Int!
+  Name: String!
+  AlbumId: Int
+  MediaTypeId: Int!
+  GenreId: Int
+  Composer: String
+  Milliseconds: Int!
+  Bytes: Int
+  UnitPrice: Int!
+}
+
+type ArtistAlbums {
+  artist: Artist!
+  albums: [Album!]!
+}
+
+type Query {
+  artists(ArtistId: Int): [Artist!]!
+  albums(ArtistId: Int): [Album!]!
+  artistAlbums(ArtistId: Int): [ArtistAlbums!]!
+  album(AlbumId: Int!): Album
+  playlistTracks(PlaylistId: Int): [PlaylistTrack]!
+}
+
+type Mutation {
+  deletePlaylistTrack(PlaylistId: Int!, TrackId: Int!): PlaylistTrack
+}
