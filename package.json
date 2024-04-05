@@ -2,18 +2,19 @@
   "name": "graphql_monorepo",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "lint": "npx @biomejs/biome lint ./",
-    "format": "npx @biomejs/biome format --write ./",
-    "client:dev": "cd apps/client && pnpm dev",
-    "server:dev:watch": "cd apps/server && pnpm dev:watch",
-    "dev": "concurrently \"pnpm server:dev:watch\" \"pnpm client:dev\""
+    "format": "npx @biomejs/biome format --write .",
+    "client:dev": "pnpm --filter @repo/client dev",
+    "server:dev:watch": "pnpm --filter @repo/server pnpm dev:watch",
+    "graphql:watch": "pnpm --filter @repo/api generate:gql:watch",
+    "dev": "concurrently \"pnpm graphql:watch\" \"pnpm server:dev:watch\" \"pnpm client:dev\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module",
   "engines": {
     "node": ">=18.16.1"
   },
